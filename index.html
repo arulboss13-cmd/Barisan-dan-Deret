@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Bahan ajar interaktif Barisan dan Deret untuk SMA">
+<title>Ruang Matematika — Barisan dan Deret</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><div class="brand-icon">∑</div><div><b>Ruang Matematika</b><small>INTERACTIVE LEARNING</small></div></div>
+  <div class="course-label"><span></span> MATEMATIKA SMA · FASE F*</div>
+  <nav id="nav">
+    <div class="nav-caption">RUANG BELAJAR</div>
+    <button class="nav-item active" data-page="home"><i>⌂</i> Beranda</button>
+    <button class="nav-item" data-page="identity"><i>▤</i> Identitas & Tujuan</button>
+    <button class="nav-item" data-page="roadmap"><i>⌘</i> Peta Pembelajaran</button>
+    <button class="nav-item" data-page="lessons"><i>▣</i> Materi Pertemuan</button>
+    <button class="nav-item" data-page="videos"><i>▷</i> Video YouTube</button>
+    <button class="nav-item" data-page="lab"><i>⌁</i> Laboratorium Pola</button>
+    <button class="nav-item" data-page="quiz"><i>✎</i> Kuis Interaktif</button>
+    <button class="nav-item" data-page="progress"><i>◴</i> Progres Belajar</button>
+    <button class="nav-item" data-page="reflection"><i>☷</i> Refleksi</button>
+    <div class="nav-caption nav-gap">SUMBER & PENGELOLAAN</div>
+    <button class="nav-item" data-page="glossary"><i>文</i> Glosarium</button>
+    <button class="nav-item" data-page="references"><i>↗</i> Referensi</button>
+    <button class="nav-item" data-page="teacher"><i>▦</i> Dashboard Guru</button>
+    <button class="nav-item" data-page="settings"><i>⚙</i> Pengaturan</button>
+  </nav>
+  <div class="sidebar-bottom"><div class="side-tip"><b>✦ Belajar dengan bermakna</b><p>Amati pola, ajukan dugaan, uji ide, dan refleksikan hasil.</p></div>
+    <button class="teacher-login" id="teacherLogin"><span>♙</span> Masuk Mode Guru <span class="arrow">↗</span></button>
+  </div>
+</aside>
+<main class="main">
+<header class="topbar"><button class="mobile-menu" id="mobileMenu">☰</button><div class="crumb">Ruang Belajar <span>/</span> <b id="crumb">Beranda</b></div><div class="top-tools"><span class="role-pill" id="rolePill">● Mode Siswa</span><button class="round-btn" id="accessBtn" title="Aksesibilitas">Aᴀ</button><button class="round-btn" id="helpBtn" title="Panduan">?</button></div></header>
+<div id="view" class="view"></div>
+<footer><span>Ruang Matematika · Barisan dan Deret</span><span>Prototipe pengembangan · ADDIE</span></footer>
+</main></div>
+
+<dialog id="loginDialog" class="dialog"><form id="loginForm" method="dialog"><div class="dialog-icon">⌑</div><p class="eyebrow">AREA TERBATAS</p><h2>Masuk Mode Guru</h2><p class="muted">Akses pengelolaan materi, aktivitas, dan hasil belajar.</p><label for="teacherEmail">Email guru (untuk backend)</label><input id="teacherEmail" type="email" placeholder="nama@sekolah.sch.id"><label for="teacherPin">PIN / kata sandi</label><input id="teacherPin" type="password" placeholder="PIN guru" required><p id="loginError" class="error" aria-live="polite"></p><div class="dialog-actions"><button class="btn btn-ghost" value="cancel">Batal</button><button class="btn btn-primary" value="default">Masuk</button></div><small class="fine-print">Mode demo memakai PIN lokal. Untuk autentikasi yang aman, aktifkan Supabase melalui konfigurasi backend.</small></form></dialog>
+
+<dialog id="editDialog" class="dialog editor"><form id="editForm" method="dialog"><div class="dialog-head"><div><p class="eyebrow">EDITOR KONTEN</p><h2 id="editTitle">Tambah konten</h2></div><button class="round-btn" value="cancel">×</button></div><div id="editFields"></div><div class="dialog-actions"><button class="btn btn-ghost" value="cancel">Batal</button><button class="btn btn-primary" value="default">Simpan</button></div></form></dialog>
+
+<dialog id="helpDialog" class="dialog"><form method="dialog"><div class="dialog-head"><div><p class="eyebrow">PANDUAN</p><h2>Memulai penggunaan</h2></div><button class="round-btn" value="cancel">×</button></div><ol class="help"><li>Mode Siswa digunakan untuk membaca materi, melihat video, mencoba simulasi, dan mengerjakan kuis.</li><li>Masuk Mode Guru untuk mengelola materi dan konten. PIN demo awal: <b>246810</b>.</li><li>Perubahan demo disimpan pada browser ini. Ekspor JSON sebagai cadangan.</li><li>Untuk sinkronisasi antargawai dan laporan kelas, isi konfigurasi Supabase pada <code>config.js</code> dan jalankan SQL pada <code>supabase/schema.sql</code>.</li></ol><p class="notice">Semua materi, tautan video, kuis, dan tujuan pembelajaran awal dikosongkan. Contoh simulasi matematika tetap tersedia sebagai alat eksplorasi, bukan materi yang dikunci.</p><div class="dialog-actions"><button class="btn btn-primary" value="close">Mengerti</button></div></form></dialog>
+
+<dialog id="accessDialog" class="dialog"><form method="dialog"><div class="dialog-head"><div><p class="eyebrow">AKSESIBILITAS</p><h2>Sesuaikan tampilan</h2></div><button class="round-btn" value="cancel">×</button></div><label for="fontScale">Ukuran teks</label><input id="fontScale" type="range" min="90" max="125" value="100"><label class="switch-row"><span>Kontras tinggi</span><input id="contrastToggle" type="checkbox"></label><label class="switch-row"><span>Kurangi animasi</span><input id="motionToggle" type="checkbox"></label><div class="dialog-actions"><button class="btn btn-primary" value="close">Terapkan</button></div></form></dialog>
+<input id="importInput" type="file" accept="application/json,.json" hidden>
+<script src="config.js"></script><script src="app.js"></script>
+</body></html>
